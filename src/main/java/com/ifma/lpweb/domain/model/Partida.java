@@ -10,12 +10,19 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@Builder
 public class Partida {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDate data;
+
+    @ManyToOne
+    @JoinColumn(name = "mandante_id")
+    private Time mandante;
+
+    @ManyToOne
+    @JoinColumn(name = "visitante_id")
+    private Time visitante;
 
     @ManyToOne
     @JoinColumn(name = "campeonato_id")

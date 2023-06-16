@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter @Builder
+@Getter @Setter
 public class Campeonato {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,9 @@ public class Campeonato {
 
     @OneToMany(mappedBy = "campeonato")
     private List<Partida> partidas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "campeonato")
+    private List<Time> times = new ArrayList<>();
 
 
     public Campeonato() {

@@ -9,13 +9,13 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Getter @Setter @Builder
+@Getter @Setter
 public class Jogador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    private LocalDate nascimento;
+    private LocalDate dataNascimento;
     private String genero;
     private float altura;
 
@@ -26,17 +26,16 @@ public class Jogador {
     public Jogador() {
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Jogador jogador = (Jogador) o;
-        return Float.compare(jogador.altura, altura) == 0 && Objects.equals(id, jogador.id) && Objects.equals(nome, jogador.nome) && Objects.equals(nascimento, jogador.nascimento) && Objects.equals(genero, jogador.genero);
+        return Float.compare(jogador.altura, altura) == 0 && Objects.equals(id, jogador.id) && Objects.equals(nome, jogador.nome) && Objects.equals(dataNascimento, jogador.dataNascimento) && Objects.equals(genero, jogador.genero);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, nascimento, genero, altura);
+        return Objects.hash(id, nome, dataNascimento, genero, altura);
     }
 }

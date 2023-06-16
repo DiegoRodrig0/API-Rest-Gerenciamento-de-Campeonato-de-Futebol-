@@ -8,7 +8,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Builder
 public class Resultado {
 
     @Id

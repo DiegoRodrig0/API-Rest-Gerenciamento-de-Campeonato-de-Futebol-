@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Builder
 @Setter
 @Getter
 public class Time {
@@ -31,5 +30,15 @@ public class Time {
 
     @OneToOne(mappedBy = "time")
     private Estadio estadio;
+
+    @OneToMany(mappedBy = "mandante")
+    private List<Partida> partidasMandante = new ArrayList<>();
+
+    @OneToMany(mappedBy = "visitante")
+    private List<Partida> partidasVisitante = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "campeonato_id")
+    private Campeonato campeonato;
 
 }
