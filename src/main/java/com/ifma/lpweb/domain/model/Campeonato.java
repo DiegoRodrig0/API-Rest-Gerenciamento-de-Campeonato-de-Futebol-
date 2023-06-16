@@ -26,4 +26,5 @@ public class Campeonato {
 
     public Campeonato() {
     }
+
 }

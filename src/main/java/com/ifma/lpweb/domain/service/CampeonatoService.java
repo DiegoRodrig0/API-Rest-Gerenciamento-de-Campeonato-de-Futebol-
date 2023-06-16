@@ -1,40 +1,38 @@
 package com.ifma.lpweb.domain.service;
 
 import com.ifma.lpweb.domain.model.Campeonato;
-import com.ifma.lpweb.domain.model.Jogador;
 import com.ifma.lpweb.domain.repository.CampeonatoRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class CampeonatoService {
+    private final CampeonatoRepository campeonatoRepository;
 
-    private CampeonatoRepository campeonatoRepository;
-    private GenericService<Campeonato> genericService;
-
-    public CampeonatoService(CampeonatoRepository campeonatoRepository, GenericService<Campeonato> genericService) {
+    public CampeonatoService(@Qualifier("campeonatoRepository") CampeonatoRepository campeonatoRepository) {
         this.campeonatoRepository = campeonatoRepository;
-        this.genericService = genericService;
     }
 
     public Campeonato salvar(Campeonato campeonato) {
-        return this.genericService.salva(campeonato);
+        return campeonatoRepository.save(campeonato);
     }
 
     public List<Campeonato> listarTodos() {
-        return genericService.todos();
+        return campeonatoRepository.findAll();
     }
 
     public void excluir(Integer id) {
-        this.genericService.excluirPor(id );
+        campeonatoRepository.deleteById(id);
     }
 
-    public Campeonato buscaPor(Integer id) {
-        return this.genericService.buscaPor(id);
+    public Optional<Campeonato> buscaPor(Integer id) {
+        return campeonatoRepository.findById(id);
     }
 
-    public Campeonato atualiza(Integer id, Campeonato campeonato) {
-        return this.genericService.atualiza(campeonato, id);
-    }
+
 
 
 }

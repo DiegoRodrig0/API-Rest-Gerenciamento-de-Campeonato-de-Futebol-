@@ -1,4 +1,4 @@
-package com.ifma.lpweb.controller;
+package com.ifma.lpweb.API.controller;
 
 import com.ifma.lpweb.domain.model.Campeonato;
 import com.ifma.lpweb.domain.service.CampeonatoService;

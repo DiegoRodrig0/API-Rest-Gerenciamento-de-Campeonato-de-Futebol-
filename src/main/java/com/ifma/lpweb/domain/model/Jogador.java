@@ -1,5 +1,6 @@
 package com.ifma.lpweb.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Jogador {
 
     @ManyToOne
     @JoinColumn(name = "time_id")
+    @JsonIgnore
     private Time time;
 
     public Jogador() {
@@ -38,4 +40,5 @@ public class Jogador {
     public int hashCode() {
         return Objects.hash(id, nome, dataNascimento, genero, altura);
     }
+
 }
