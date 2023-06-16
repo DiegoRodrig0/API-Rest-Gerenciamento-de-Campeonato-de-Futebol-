@@ -14,7 +14,7 @@ public class Resultado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer numGolsMantande;
+    private Integer numGolsMandante;
     private Integer numGolsVisitante;
 
     @OneToOne

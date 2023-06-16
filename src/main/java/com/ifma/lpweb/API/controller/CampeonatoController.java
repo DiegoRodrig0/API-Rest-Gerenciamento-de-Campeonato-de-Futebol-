@@ -61,6 +61,7 @@ public class CampeonatoController {
         if (campeonatoOptional.isPresent()) {
             Campeonato campeonato = campeonatoOptional.get();
             List<Time> times = campeonato.getTimes();
+
             for (Time time : times) {
                 int vitorias = 0;
                 int saldoGols = 0;
@@ -69,13 +70,17 @@ public class CampeonatoController {
                 for (Partida partida : time.getPartidasMandante()) {
                     Resultado resultado = partida.getResultado();
                     if (resultado != null) {
-                        Integer numGolsMandante = resultado.getNumGolsMantande();
+                        System.out.println("Tem Resultado");
+                        Integer numGolsMandante = resultado.getNumGolsMandante();
                         Integer numGolsVisitante = resultado.getNumGolsVisitante();
                         if (numGolsMandante != null && numGolsVisitante != null) {
+                            System.out.println("Tem Gols");
                             if (numGolsMandante > numGolsVisitante) {
+                                System.out.println("Venceu");
                                 vitorias++;
                             }
                             saldoGols += (numGolsMandante - numGolsVisitante);
+                            System.out.println(saldoGols);
                         }
                     }
                 }
@@ -83,7 +88,7 @@ public class CampeonatoController {
                 for (Partida partida : time.getPartidasVisitante()) {
                     Resultado resultado = partida.getResultado();
                     if (resultado != null) {
-                        Integer numGolsMandante = resultado.getNumGolsMantande();
+                        Integer numGolsMandante = resultado.getNumGolsMandante();
                         Integer numGolsVisitante = resultado.getNumGolsVisitante();
                         if (numGolsMandante != null && numGolsVisitante != null) {
                             if (numGolsVisitante > numGolsMandante) {
@@ -93,6 +98,8 @@ public class CampeonatoController {
                         }
                     }
                 }
+                System.out.println(vitorias);
+                System.out.println(saldoGols);
                 time.setVitorias(vitorias);
                 time.setSaldoGols(saldoGols);
             }
