@@ -18,6 +18,12 @@ public class Estadio {
     public Estadio() {
     }
 
+    public Estadio(String nome, String endereco, Time time) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.time = time;
+    }
+
     @OneToOne
     @JoinColumn(name = "time_id")
     private Time time;

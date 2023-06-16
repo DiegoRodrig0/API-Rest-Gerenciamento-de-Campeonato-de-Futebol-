@@ -1,5 +1,6 @@
 package com.ifma.lpweb.API.controller;
 
+import com.ifma.lpweb.API.dto.request.CampeonatoRequest;
 import com.ifma.lpweb.API.dto.response.CampeonatoResponse;
 import com.ifma.lpweb.API.dto.response.JogadorResponse;
 import com.ifma.lpweb.API.dto.response.TimeResponse;
@@ -9,10 +10,7 @@ import com.ifma.lpweb.domain.service.CampeonatoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -30,6 +28,21 @@ public class CampeonatoController {
     public CampeonatoController(CampeonatoService campeonatoService, ModelMapper modelMapper) {
         this.campeonatoService = campeonatoService;
         this.modelMapper = modelMapper;
+    }
+
+    @PostMapping("/criar")
+    public ResponseEntity<CampeonatoResponse> criarCampeonato(@RequestBody CampeonatoRequest campeonato) {
+        Campeonato novoCampeonato = modelMapper.map(campeonato, Campeonato.class);
+        novoCampeonato = campeonatoService.salvar(novoCampeonato);
+        CampeonatoResponse campeonatoResponse = modelMapper.map(novoCampeonato, CampeonatoResponse.class);
+        return new ResponseEntity<>(campeonatoResponse, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}/atualizar")
+    public ResponseEntity<CampeonatoResponse> atualizarCampeonato(@PathVariable Integer id, @RequestBody CampeonatoRequest campeonato) {
+        Campeonato campeonatoAtualizado = campeonatoService.atualizar(id, campeonato);
+        CampeonatoResponse campeonatoResponse = modelMapper.map(campeonatoAtualizado, CampeonatoResponse.class);
+        return new ResponseEntity<>(campeonatoResponse, HttpStatus.OK);
     }
 
 

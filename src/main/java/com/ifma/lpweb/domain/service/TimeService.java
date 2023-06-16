@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -32,4 +33,10 @@ public class TimeService {
     public Optional<Time> buscaPor(Integer id) {
         return timeRepository.findById(id);
     }
+
+    public Time obterTimePorId(Integer id) {
+        return timeRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Time não encontrado com o ID"));
+    }
+
 }
