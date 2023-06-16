@@ -28,6 +28,9 @@ public class Partida {
     @JoinColumn(name = "campeonato_id")
     private Campeonato campeonato;
 
+    @OneToOne(mappedBy = "partida")
+    private Resultado resultado;
+
     public Partida() {
     }
 

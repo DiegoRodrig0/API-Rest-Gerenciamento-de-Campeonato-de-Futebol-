@@ -41,4 +41,11 @@ public class Time {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Campeonato> campeonatos = new ArrayList<>();
 
+    @Transient
+    private Integer SaldoGols;
+
+    @Transient
+    private Integer Vitorias;
+
+
 }

@@ -1,6 +1,7 @@
 package com.ifma.lpweb.domain.service;
 
 import com.ifma.lpweb.domain.model.Campeonato;
+import com.ifma.lpweb.domain.model.Time;
 import com.ifma.lpweb.domain.repository.CampeonatoRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
