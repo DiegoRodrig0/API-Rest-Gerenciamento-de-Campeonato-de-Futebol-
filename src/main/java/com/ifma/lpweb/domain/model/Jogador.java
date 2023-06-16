@@ -19,16 +19,12 @@ public class Jogador {
     private String genero;
     private float altura;
 
-    public Jogador(String nome, LocalDate nascimento, String genero, float altura) {
-        this.nome = nome;
-        this.nascimento = nascimento;
-        this.genero = genero;
-        this.altura = altura;
-    }
-
     @ManyToOne
     @JoinColumn(name = "time_id")
     private Time time;
+
+    public Jogador() {
+    }
 
 
     @Override
