@@ -1,5 +1,6 @@
 package com.ifma.lpweb.API.controller;
 
+import com.ifma.lpweb.API.dto.request.JogadorRequest;
 import com.ifma.lpweb.API.dto.response.JogadorResponse;
 import com.ifma.lpweb.domain.model.Jogador;
 import com.ifma.lpweb.domain.service.JogadorService;
@@ -24,7 +25,8 @@ public class JogadorController {
     }
 
     @PostMapping("/criar")
-    public ResponseEntity<Jogador> criar(@RequestBody Jogador jogador) {
+    public ResponseEntity<Jogador> criar(@RequestBody JogadorRequest jogadorRequest) {
+        Jogador jogador = modelMapper.map(jogadorRequest, Jogador.class);
         Jogador jogadorCriado = jogadorService.salvar(jogador);
         return ResponseEntity.status(HttpStatus.CREATED).body(jogadorCriado);
     }
