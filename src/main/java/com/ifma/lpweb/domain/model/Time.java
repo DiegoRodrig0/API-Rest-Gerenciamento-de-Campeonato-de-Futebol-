@@ -37,8 +37,7 @@ public class Time {
     @OneToMany(mappedBy = "visitante")
     private List<Partida> partidasVisitante = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "campeonato_id")
-    private Campeonato campeonato;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Campeonato> campeonatos = new ArrayList<>();
 
 }

@@ -20,7 +20,7 @@ public class Campeonato {
     @OneToMany(mappedBy = "campeonato")
     private List<Partida> partidas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "campeonato")
+    @ManyToMany(mappedBy = "campeonatos")
     private List<Time> times = new ArrayList<>();
 
 
